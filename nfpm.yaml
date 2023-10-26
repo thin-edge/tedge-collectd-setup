@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://nfpm.goreleaser.com/static/schema.json
+---
+name: tedge-collectd-setup
+arch: all
+platform: linux
+version: ${SEMVER}
+section: misc
+priority: optional
+maintainer: Community <community@thin-edge.io>
+description: thin-edge.io inventory scripts
+vendor: thin-edge.io
+homepage: https://github.com/thin-edge/tedge-inventory
+license: Apache License 2.0
+depends:
+  - tedge
+  - tedge-mapper
+apk:
+  # Use noarch instead of "all"
+  arch: noarch
+contents:
+  - src: ./src/collectd.conf
+    dst: /etc/collectd/collectd.conf
+    type: config
+    file_info:
+      mode: 0644
+      group: tedge
+      owner: tedge
+
+overrides:
+  apk:
+    depends:
+      - collectd
+      - collectd-mqtt
+    scripts:
+      postinstall: src/packaging/postinstall
+      postremove: src/packaging/postremove
+
+  rpm:
+    depends:
+      - collectd
+      - libmosquitto1
+    scripts:
+      postinstall: src/packaging/postinstall
+      postremove: src/packaging/postremove
+
+  deb:
+    depends:
+      - collectd-core
+      - libmosquitto1
+    scripts:
+      postinstall: src/packaging/postinstall
+      postremove: src/packaging/postremove
