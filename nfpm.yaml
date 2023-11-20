@@ -7,9 +7,9 @@ version: ${SEMVER}
 section: misc
 priority: optional
 maintainer: Community <community@thin-edge.io>
-description: thin-edge.io inventory scripts
+description: thin-edge.io collectd setup
 vendor: thin-edge.io
-homepage: https://github.com/thin-edge/tedge-inventory
+homepage: https://github.com/thin-edge/tedge-collectd-setup
 license: Apache License 2.0
 depends:
   - tedge
