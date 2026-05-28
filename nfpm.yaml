@@ -25,6 +25,12 @@ contents:
       mode: 0644
       group: tedge
       owner: tedge
+  - src: ./src/collectd
+    dst: /etc/tedge/mappers/local/flows/collectd/
+    file_info:
+      mode: 0644
+      group: tedge
+      owner: tedge
 
 overrides:
   apk:

@@ -6,14 +6,6 @@ do_systemd() {
         systemctl --system daemon-reload >/dev/null ||:
     fi
 
-    # tedge-mapper-collectd
-    systemctl unmask tedge-mapper-collectd ||:
-    systemctl preset tedge-mapper-collectd ||:
-    systemctl enable tedge-mapper-collectd ||:
-    if [ -d /run/systemd/system ]; then
-        systemctl restart tedge-mapper-collectd ||:
-    fi
-
     # collectd
     systemctl unmask collectd ||:
     systemctl preset collectd ||:
@@ -26,10 +18,8 @@ do_systemd() {
 
 do_initd() {
     if command -V chkconfig >/dev/null 2>&1; then
-        chkconfig --add tedge-mapper-collectd ||:
         chkconfig --add collectd ||:
     fi
-    service tedge-mapper-collectd restart ||:
     service collectd restart ||:
 }
 

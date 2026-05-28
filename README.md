@@ -1,6 +1,6 @@
 # tedge-collectd-setup
 
-Default collectd configuration for thin-edge.io. It includes sensible collectd defaults settings and enables/starts the related services such as collectd and tedge-mapper-collectd.
+Default collectd configuration for thin-edge.io. It includes sensible collectd defaults settings and enables/starts the related services such as collectd and tedge-mapper-local
 
 This is a community driven repository where users are encouraged to create PRs to add support for any additional init system, or make changes to any of the existing definitions.
 
@@ -12,7 +12,7 @@ The following thin-edge.io customization is included in the plugin.
 
 * install and configure collectd
 * enable/start the `collectd` service
-* enable/start the `tedge-mapper-collectd` service
+* install a local flow transforming `collectd` data into thin-edge measurements
 
 **Technical summary**
 
