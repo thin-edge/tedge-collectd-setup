@@ -11,9 +11,6 @@ description: thin-edge.io collectd setup
 vendor: thin-edge.io
 homepage: https://github.com/thin-edge/tedge-collectd-setup
 license: Apache License 2.0
-depends:
-  - tedge
-  - tedge-mapper
 apk:
   # Use noarch instead of "all"
   arch: noarch
@@ -25,12 +22,20 @@ contents:
       mode: 0644
       group: tedge
       owner: tedge
+  - src: ./src/collectd
+    dst: /etc/tedge/mappers/local/flows/collectd/
+    file_info:
+      mode: 0644
+      group: tedge
+      owner: tedge
 
 overrides:
   apk:
     depends:
       - collectd
       - collectd-mqtt
+      - tedge>=2.0.0
+      - tedge-mapper>=2.0.0
     scripts:
       postinstall: src/packaging/postinstall
       postremove: src/packaging/postremove
@@ -39,6 +44,8 @@ overrides:
     depends:
       - collectd
       - libmosquitto1
+      - tedge >= 2.0.0
+      - tedge-mapper >= 2.0.0
     scripts:
       postinstall: src/packaging/postinstall
       postremove: src/packaging/postremove
@@ -47,6 +54,8 @@ overrides:
     depends:
       - collectd-core
       - libmosquitto1
+      - tedge (>= 2.0.0)
+      - tedge-mapper (>= 2.0.0)
     scripts:
       postinstall: src/packaging/postinstall
       postremove: src/packaging/postremove

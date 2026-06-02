@@ -1,0 +1,9 @@
+version = "1.0.0"
+description = "Convert collectd messages to thin-edge.io measurements"
+
+input.mqtt.topics = ["collectd/+/+/+"]
+
+steps = [
+    { script = "collectd-to-te-measurements.js" },
+    { script = "group-measurements.js", interval = "1s" },
+]
