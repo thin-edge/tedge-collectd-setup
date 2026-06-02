@@ -5,5 +5,5 @@ input.mqtt.topics = ["collectd/+/+/+"]
 
 steps = [
     { script = "collectd-to-te-measurements.js" },
-    { builtin = "group-measurements", interval = "1s", config = { time_window = "500ms" } },
+    { script = "group-measurements.js", interval = "1s" },
 ]
